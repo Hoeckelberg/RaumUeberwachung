@@ -97,11 +97,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\645\\GUI\\GUI\\GUI.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\645\\RaumUeberwachung\\GUI\\GUI\\GUI.csproj",
       "projectName": "GUI",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\645\\GUI\\GUI\\GUI.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\645\\RaumUeberwachung\\GUI\\GUI\\GUI.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\645\\GUI\\GUI\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\645\\RaumUeberwachung\\GUI\\GUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

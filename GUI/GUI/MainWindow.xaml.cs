@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.Net;
 
 namespace GUI
 {
@@ -21,9 +23,30 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        string Uri = "ftp://192.168.2.111/Dokumente/POA_Moritz_Marvin/Oversee/data.dat";
+
         public MainWindow()
         {
+            string count;
+            WebClient request = new WebClient();
+            request.Credentials = new NetworkCredential("pi", "2447121201M");
+
+
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                try
+                {
+                    byte[] newFileData = request.DownloadData(Uri);
+                    count = System.Text.Encoding.UTF8.GetString(newFileData);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    throw;
+                }
+                L1.Content = count;
+            }, Dispatcher);
         }
 
         private void ButtonPopUp_Click(object sender, RoutedEventArgs e)
