@@ -1,0 +1,96 @@
+﻿<Window x:Class="GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d" Height="450" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" ResizeMode="NoResize" Title="">
+    <Window.Resources>
+        <Storyboard x:Key="MenueOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenue">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenueClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenue">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenue">
+            <BeginStoryboard Storyboard="{StaticResource MenueOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenue">
+            <BeginStoryboard Storyboard="{StaticResource MenueClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <Grid Height="80" VerticalAlignment="Top" Background="LightSlateGray">
+            <TextBlock Foreground="White" Padding="20" Margin="12 0 0 6" Text="POA 2020 - Moritz, Marvin" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="bold"></TextBlock>
+
+        </Grid>
+        <StackPanel Margin="12 5" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Right">
+            <materialDesign:PopupBox Foreground="White" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" HorizontalAlignment="Right">
+                <StackPanel Width="150">
+                    <Button x:Name="ButtonInfo" Content="Info" Click="ButtonInfo_Click"/>
+                    <Separator/>
+                    <Button x:Name="ButtonPopUp" Content="Exit" Click="ButtonPopUp_Click"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+
+        </StackPanel>
+
+        <Grid x:Name="GridMenue" Width="20" HorizontalAlignment="Left" Background="DarkGray">
+        </Grid>
+        <Grid Width="200" HorizontalAlignment="Left" x:Name="Anzahl" >
+            <StackPanel>
+                <Grid Height="150" Background="White">
+                    <Button x:Name="ButtonCloseMenue" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,140,90" VerticalAlignment="Bottom" Visibility="Collapsed" Click="ButtonCloseMenue_Click">
+                        <materialDesign:PackIcon Foreground="black" Kind="ArrowLeft" Width="25"/>
+                    </Button>
+                    <Button x:Name="ButtonOpenMenue" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,140,90" VerticalAlignment="Bottom" Click="ButtonOpenMenue_Click">
+                        <materialDesign:PackIcon Foreground="black" Kind="Menu" Width="30"  Height="50"/>
+                    </Button>
+                </Grid>
+                <ListView Foreground="White">
+                    <ListViewItem Height="60" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Margin="10" Kind="ViewDashboard" Width="25" VerticalAlignment="Center" Foreground="white"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Margin="10" Kind="AlignVerticalBottom" Width="25" VerticalAlignment="Center"/>
+                            <TextBlock Text="Statistik" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Margin="10" Kind="Github" Width="25" VerticalAlignment="Center"/>
+                            <Button BorderThickness="0" Background="Transparent
+                                    " BorderBrush="Transparent" x:Name="GitLabLink" Click="GitLabLink_Click" Opacity="1" Panel.ZIndex="1" Width="85" Content="Gitlab" Visibility="Collapsed"/>
+
+                        </StackPanel>
+
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <TextBlock Background="Transparent" FontFamily="Arial" FontWeight="Thin" Panel.ZIndex="1"
+                       Text="Anzahl Personen im Raum:" FontSize="22" TextAlignment="Center" Margin="210,97,219,257">
+
+            </TextBlock>
+            <Label HorizontalContentAlignment="Center" x:Name="L1"  Content="" Background="Transparent" Padding="10 10 10 10" FontSize="90" FontFamily="Courier New" HorizontalAlignment="Left" Margin="210,177,0,0" VerticalAlignment="Top" Width="371" Height="129"/>
+
+        </Grid>
+    </Grid>
+</Window>
